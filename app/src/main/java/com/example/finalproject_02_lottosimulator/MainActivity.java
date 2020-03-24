@@ -46,6 +46,22 @@ public class MainActivity extends BaseActivity {
     @Override
     public void setupEvents() {
 
+        binding.buyAutoLottoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                사용금액의 총액이 1천만원 될때까지 반복
+
+                while (useMoneyAmount <=1000000000){
+//                    당첨번호를 만들고 => 등수를 카운팅 반복
+                    makeWinLottoNum();
+                    checkLottoRank();
+
+                }
+
+            }
+        });
+
         binding.buyOneLottoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -195,12 +211,12 @@ public class MainActivity extends BaseActivity {
 
         binding.winMoneyTxt.setText(String.format("당첨 금액 : %,d원",winMoneyAmount));
 
-        binding.firstRankCountTxt.setText(String.format("당첨 금액 : %,d원",firstRankCount));
-        binding.secondRankCountTxt.setText(String.format("당첨 금액 : %,d원",secondRankCount));
-        binding.thirdRankCountTxt.setText(String.format("당첨 금액 : %,d원",thirdRankCount));
-        binding.fourthRankCountTxt.setText(String.format("당첨 금액 : %,d원",fourthRankCount));
-        binding.fifthRankCountTxt.setText(String.format("당첨 금액 : %,d원",fifthRankCount));
-        binding.noRankCountTxt.setText(String.format("당첨 금액 : %,d원",noRankCount));
+        binding.firstRankCountTxt.setText(String.format("1등 : %,d회",firstRankCount));
+        binding.secondRankCountTxt.setText(String.format("2등 : %,d회",secondRankCount));
+        binding.thirdRankCountTxt.setText(String.format("3등 : %,d회",thirdRankCount));
+        binding.fourthRankCountTxt.setText(String.format("4등 : %,d회",fourthRankCount));
+        binding.fifthRankCountTxt.setText(String.format("5등 : %,d회",fifthRankCount));
+        binding.noRankCountTxt.setText(String.format("꽝! : %,d회",noRankCount));
 
     }
 }
