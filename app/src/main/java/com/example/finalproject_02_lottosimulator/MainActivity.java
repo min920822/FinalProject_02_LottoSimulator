@@ -33,6 +33,7 @@ public class MainActivity extends BaseActivity {
     int fifthRankCount = 0;
     int noRankCount = 0;
 
+    boolean isAutoLottoRunning = false;
 
 
     ActivityMainBinding binding = null;
@@ -56,6 +57,17 @@ public class MainActivity extends BaseActivity {
 
     void buyLottoLoop(){
         mHandler.post(buyLottoRunnable);
+        isAutoLottoRunning = true;
+        binding.buyAutoLottoBtn.setText("자동 구매 중단");
+    }
+
+
+    void  stopBuyingLotto(){
+        mHandler.removeCallbacks(buyLottoRunnable);
+
+        isAutoLottoRunning = false;
+        binding.buyAutoLottoBtn.setText("자동 구매 재개");
+
     }
 
 
