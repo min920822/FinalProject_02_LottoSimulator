@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends BaseActivity{
+public class MainActivity extends BaseActivity {
 
     List<TextView> winNumTxtList = new ArrayList<>();
     int[] winLottoNumArr = new int[6];
     int bonusNum = 0;
 
-    int[] myLottoNumArr = {12, 15, 22, 27, 40, 43 };
+    int[] myLottoNumArr = {12, 15, 22, 27, 40, 43};
     long useMoneyAmount = 0;
 
     ActivityMainBinding binding = null;
@@ -70,7 +70,7 @@ public class MainActivity extends BaseActivity{
 
             while (true) {
 
-                int randomNum = (int) (Math.random()*45 + 1);
+                int randomNum = (int) (Math.random() * 45 + 1);
 
                 boolean isDuplOk = true;
 
@@ -85,7 +85,7 @@ public class MainActivity extends BaseActivity{
 
                 if (isDuplOk) {
                     winLottoNumArr[i] = randomNum;
-                    Log.i("당첨번호", randomNum+"");
+                    Log.i("당첨번호", randomNum + "");
                     break; // 무한반복 탈출
                 }
 
@@ -96,12 +96,12 @@ public class MainActivity extends BaseActivity{
 //        6개의 당첨번호를
         Arrays.sort(winLottoNumArr);
 
-        for (int i = 0; i < winLottoNumArr.length; i++ ) {
-            winNumTxtList.get(i).setText(winLottoNumArr[i]+"");
+        for (int i = 0; i < winLottoNumArr.length; i++) {
+            winNumTxtList.get(i).setText(winLottoNumArr[i] + "");
         }
 
         while (true) {
-            int randomNum = (int) (Math.random()*45+1);
+            int randomNum = (int) (Math.random() * 45 + 1);
 
             boolean isDuplOk = true;
             for (int winNum : winLottoNumArr) {
@@ -117,17 +117,16 @@ public class MainActivity extends BaseActivity{
             }
         }
 
-        binding.bonusNumTxt.setText(bonusNum+"");
-
+        binding.bonusNumTxt.setText(bonusNum + "");
 
 
     }
 
-    void  checkLottoRank(){
+    void checkLottoRank() {
 //      돈을 천원 지불 + 등수 확인
         useMoneyAmount += 1000;
 
-        binding.useMoneyTxt.setText(String.format("사용 금액 : %,d원",useMoneyAmount));
+        binding.useMoneyTxt.setText(String.format("사용 금액 : %,d원", useMoneyAmount));
 
 //        몇등인지?
 //        내 번호를 하나 들고 => 당첨번호 여섯개를 돌아볼것임.
@@ -136,29 +135,26 @@ public class MainActivity extends BaseActivity{
 //        맞춘갯수를 담아줄 변수
         int correctCount = 0;
 
-        for (int myNum : myLottoNumArr){
-            for (int winNum : winLottoNumArr){
+        for (int myNum : myLottoNumArr) {
+            for (int winNum : winLottoNumArr) {
 
-                if (myNum == winNum){
+                if (myNum == winNum) {
                     correctCount++;
                 }
             }
         }
 
 //        correctCount의 값에 따라 등수를 판정.
-        if (correctCount == 6){
+        if (correctCount == 6) {
 //            1등
-        }
-        else if (correctCount == 5){
+        } else if (correctCount == 5) {
 //            2등 / 3등 재검사 필요 => 보너스번호를 맞췄는지?
 
-        }
-        else if (correctCount == 4){
+        } else if (correctCount == 4) {
 
-        }
-        else if (correctCount == 3){
+        } else if (correctCount == 3) {
 
+        } else {
         }
-        else {
     }
 }
